@@ -4,32 +4,32 @@ import 'codemirror/theme/material.css'
 import 'codemirror/mode/xml/xml'
 import 'codemirror/mode/javascript/javascript'
 import 'codemirror/mode/css/css'
-import {Controlled as ControlledEditor} from "react-codemirror2"
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
-import {faWindowMaximize,faWindowMinimize} from "@fortawesome/free-solid-svg-icons"
+import { Controlled as ControlledEditor } from "react-codemirror2"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faWindowMaximize, faWindowMinimize } from "@fortawesome/free-solid-svg-icons"
 
 export default function Editor(props) {
 
-    const{
+    const {
         language,
         displayName,
         value,
         onChange
-    }=props
+    } = props
 
-    const [open,setOpen]=useState(true)
+    const [open, setOpen] = useState(true)
 
-    function handleChange(editor,data,value){
+    function handleChange(editor, data, value) {
         onChange(value)
     }
 
     return (
-        <div className={`editor-container ${open?'':'collapsed' }`}>
+        <div className={`editor-container ${open ? '' : 'collapsed'}`}>
             <div className="editor-title">
                 {displayName}
-                <button onClick={()=>setOpen(prevOpen=>!prevOpen)} className="expand-collapse-btn">
+                <button onClick={() => setOpen(prevOpen => !prevOpen)} className="expand-collapse-btn">
                     <FontAwesomeIcon icon=
-                    {open? faWindowMinimize : faWindowMaximize}
+                        {open ? faWindowMinimize : faWindowMaximize}
                     />
                 </button>
             </div>
@@ -38,11 +38,11 @@ export default function Editor(props) {
                 value={value}
                 className="code-mirror-wrapper"
                 options={{
-                    lineWrapping:"true",
-                    lint:"true",
-                    mode:language,
-                    theme:"material",
-                    lineNumbers:"true"
+                    lineWrapping: "true",
+                    lint: "true",
+                    mode: language,
+                    theme: "material",
+                    lineNumbers: "true"
                 }}
             />
         </div>
